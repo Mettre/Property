@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 19/11/2018 17:09:18
+ Date: 21/11/2018 17:11:40
 */
 
 SET NAMES utf8mb4;
@@ -117,7 +117,7 @@ CREATE TABLE `wc_news`  (
 -- ----------------------------
 -- Records of wc_news
 -- ----------------------------
-INSERT INTO `wc_news` VALUES ('2018111916441291963', '2019元旦放假通知及放假时间表，公考的你该怎么利用时间复习呢', '2018111514554801539', '2018-11-19 16:44:12', '2018-11-19 16:44:12', 1, 'https://baijiahao.baidu.com/s?id=1617532454827530300&wfr=spider&for=pc', 0, 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1542617032&di=a99f93cc83540a34127ce2de3ebbab36&src=http://www.hbnews.net/epaper/hbrb/html/2013/08/16/01/images/8.jpg', 0, NULL);
+INSERT INTO `wc_news` VALUES ('2018111916441291963', '2019元旦放假通知及放假时间表，公考的你该怎么利用时间复习呢', '2018111514554801539', '2018-11-19 16:44:12', '2018-11-19 16:44:12', 1, 'https://baijiahao.baidu.com/s?id=1617532454827530300&wfr=spider&for=pc', 0, 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1542617032&di=a99f93cc83540a34127ce2de3ebbab36&src=http://www.hbnews.net/epaper/hbrb/html/2013/08/16/01/images/8.jpg', 0, 10001);
 
 -- ----------------------------
 -- Table structure for wc_read
@@ -134,6 +134,12 @@ CREATE TABLE `wc_read`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
+-- Records of wc_read
+-- ----------------------------
+INSERT INTO `wc_read` VALUES ('R201811211110441503', '2018111916441291963', 'NEWS', '2018111514554801539', NULL, '2018-11-21 11:10:44');
+INSERT INTO `wc_read` VALUES ('R201811211111032274', '2018111916441291963', 'NEWS', NULL, '18844157372', '2018-11-21 11:11:03');
+
+-- ----------------------------
 -- Table structure for wc_reply
 -- ----------------------------
 DROP TABLE IF EXISTS `wc_reply`;
@@ -141,14 +147,19 @@ CREATE TABLE `wc_reply`  (
   `reply_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '回复id',
   `reply_parent_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '回复父id',
   `dynamic_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '该动态主id',
-  `reply_parent_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '被回复人的userId',
-  `dynamic_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '帖子发布者的userId',
+  `reply_parent_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '被回复人的userId',
+  `dynamic_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '该条回复的userId',
   `reply_content` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '回复内容',
   `creation_time` datetime NOT NULL COMMENT '回复时间',
   `is_show` tinyint(4) NOT NULL COMMENT '是否正在显示',
   `dynamic_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '该动态类别 新闻、话题、说说',
   PRIMARY KEY (`reply_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of wc_reply
+-- ----------------------------
+INSERT INTO `wc_reply` VALUES ('RP201811211650186103', NULL, '2018111916441291963', NULL, '2018111514554801539', '说的真好', '2018-11-21 16:50:18', 1, 'NEWS');
 
 -- ----------------------------
 -- Table structure for wc_sms

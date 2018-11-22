@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 21/11/2018 17:11:40
+ Date: 22/11/2018 17:01:55
 */
 
 SET NAMES utf8mb4;
@@ -151,15 +151,21 @@ CREATE TABLE `wc_reply`  (
   `dynamic_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '该条回复的userId',
   `reply_content` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '回复内容',
   `creation_time` datetime NOT NULL COMMENT '回复时间',
-  `is_show` tinyint(4) NOT NULL COMMENT '是否正在显示',
+  `is_show` tinyint(4) NOT NULL COMMENT '是否显示',
   `dynamic_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '该动态类别 新闻、话题、说说',
+  `second_dynamic_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '所属一级评论',
   PRIMARY KEY (`reply_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of wc_reply
 -- ----------------------------
-INSERT INTO `wc_reply` VALUES ('RP201811211650186103', NULL, '2018111916441291963', NULL, '2018111514554801539', '说的真好', '2018-11-21 16:50:18', 1, 'NEWS');
+INSERT INTO `wc_reply` VALUES ('RP201811211650186103', NULL, '2018111916441291963', NULL, '2018111514554801539', '说的真好', '2018-11-21 16:50:18', 1, 'NEWS', NULL);
+INSERT INTO `wc_reply` VALUES ('RP201811221007028470', NULL, '2018111916441291963', NULL, '2018112209485799882', '说的真好+1', '2018-11-22 10:07:02', 1, 'NEWS', NULL);
+INSERT INTO `wc_reply` VALUES ('RP201811221105508699', NULL, '2018111916441291963', NULL, '2018112209485799882', '说的真好+2', '2018-11-22 11:05:50', 1, 'NEWS', NULL);
+INSERT INTO `wc_reply` VALUES ('RP201811221408501569', 'RP201811211650186103', '2018111916441291963', '2018111514554801539', '2018112209485799882', '说的哪里好了？', '2018-11-22 14:08:50', 1, 'NEWS', 'RP201811211650186103');
+INSERT INTO `wc_reply` VALUES ('RP201811221514597422', 'RP201811221408501569', '2018111916441291963', '2018112209485799882', '2018111514554801539', '我说错了吗？', '2018-11-22 15:14:59', 1, 'NEWS', 'RP201811211650186103');
+INSERT INTO `wc_reply` VALUES ('RP201811221538107123', NULL, '2018111916441291963', NULL, '2018111514554801539', '好棒啊', '2018-11-22 15:38:10', 1, 'NEWS', 'RP201811221538107123');
 
 -- ----------------------------
 -- Table structure for wc_sms
@@ -199,6 +205,7 @@ CREATE TABLE `wc_user`  (
 -- Records of wc_user
 -- ----------------------------
 INSERT INTO `wc_user` VALUES ('2018111514554801539', '安德拉', '你若安好便是晴天', '男', 'http://img4.duitang.com/uploads/item/201407/16/20140716132526_TcyTY.thumb.600_0.jpeg', '123456', '18844157372', '江苏 苏州', NULL, 'http://image.biaobaiju.com/uploads/20180918/15/1537256494-ZnSKMzEoBI.jpeg', '2018-11-15 14:55:48', '2018-11-15 14:55:48', NULL);
+INSERT INTO `wc_user` VALUES ('2018112209485799882', '阿凡达', '阿拉上海宁', '男', 'string', '$2a$10$.Ehdm124nBWnhhPxpHMGjuFyN/xtHRAG0NQnA13D10BDsvok38xke', '18844157373', '江苏无锡', 99, 'string', '2018-11-22 09:48:59', '2018-11-22 09:48:59', NULL);
 
 -- ----------------------------
 -- Table structure for wc_visitor

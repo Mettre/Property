@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 22/11/2018 17:01:55
+ Date: 23/11/2018 15:07:38
 */
 
 SET NAMES utf8mb4;
@@ -56,7 +56,7 @@ DROP TABLE IF EXISTS `wc_follow`;
 CREATE TABLE `wc_follow`  (
   `follow_id` bigint(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '用户id',
-  `followed_user` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '被关注人的id',
+  `followed_user` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '被关注人的用户id',
   `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '关注状态:是否取消关注等',
   `creation_time` datetime NOT NULL COMMENT '关注时间',
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
@@ -88,12 +88,20 @@ CREATE TABLE `wc_moments`  (
   `moments_title` varchar(140) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '说说标题',
   `publisher_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '说说发布人',
   `creation_time` datetime NOT NULL COMMENT '发布时间',
-  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   `is_show` tinyint(4) NOT NULL COMMENT '是否发布',
   `moments_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '说说图',
-  `comment_num` int(11) NOT NULL COMMENT '评论数',
   PRIMARY KEY (`moments_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of wc_moments
+-- ----------------------------
+INSERT INTO `wc_moments` VALUES ('2018112311245829795', '今天天气真好啊，发张图大家看看', '2018111514554801539', '2018-11-23 11:24:58', 1, 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543548249&di=74b243a26a5d8aac750843dfd39e8cf3&imgtype=jpg&er=1&src=http%3A%2F%2Fs14.sinaimg.cn%2Fmw690%2F002ZriB0zy72JzMLZz7dd%26amp%3B690');
+INSERT INTO `wc_moments` VALUES ('2018112312415908495', '哈哈哈，试一下新效果', '2018111514554801539', '2018-11-23 12:41:59', 1, 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543548249&di=74b243a26a5d8aac750843dfd39e8cf3&imgtype=jpg&er=1&src=http%3A%2F%2Fs14.sinaimg.cn%2Fmw690%2F002ZriB0zy72JzMLZz7dd%26amp%3B690');
+INSERT INTO `wc_moments` VALUES ('2018112312430700179', '好想哭啊，我为什么叫阿凡达', '2018112209485799882', '2018-11-23 12:43:07', 1, 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543548249&di=74b243a26a5d8aac750843dfd39e8cf3&imgtype=jpg&er=1&src=http%3A%2F%2Fs14.sinaimg.cn%2Fmw690%2F002ZriB0zy72JzMLZz7dd%26amp%3B690');
+INSERT INTO `wc_moments` VALUES ('2018112314211383132', '你好啊', 'stri32323ng', '2018-11-23 14:21:13', 1, 'string');
+INSERT INTO `wc_moments` VALUES ('2018112314251974121', '你好啊', 'stri32323ng', '2018-11-23 14:25:19', 1, 'string');
+INSERT INTO `wc_moments` VALUES ('2018112314585520524', '你好啊', 'stri32323ng', '2018-11-23 14:58:55', 1, 'string');
 
 -- ----------------------------
 -- Table structure for wc_news
@@ -153,16 +161,16 @@ CREATE TABLE `wc_reply`  (
   `creation_time` datetime NOT NULL COMMENT '回复时间',
   `is_show` tinyint(4) NOT NULL COMMENT '是否显示',
   `dynamic_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '该动态类别 新闻、话题、说说',
-  `second_dynamic_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '所属一级评论',
+  `second_dynamic_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '所属一级评论',
   PRIMARY KEY (`reply_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of wc_reply
 -- ----------------------------
-INSERT INTO `wc_reply` VALUES ('RP201811211650186103', NULL, '2018111916441291963', NULL, '2018111514554801539', '说的真好', '2018-11-21 16:50:18', 1, 'NEWS', NULL);
-INSERT INTO `wc_reply` VALUES ('RP201811221007028470', NULL, '2018111916441291963', NULL, '2018112209485799882', '说的真好+1', '2018-11-22 10:07:02', 1, 'NEWS', NULL);
-INSERT INTO `wc_reply` VALUES ('RP201811221105508699', NULL, '2018111916441291963', NULL, '2018112209485799882', '说的真好+2', '2018-11-22 11:05:50', 1, 'NEWS', NULL);
+INSERT INTO `wc_reply` VALUES ('RP201811211650186103', NULL, '2018111916441291963', NULL, '2018111514554801539', '说的真好', '2018-11-21 16:50:18', 1, 'NEWS', 'RP201811211650186103');
+INSERT INTO `wc_reply` VALUES ('RP201811221007028470', NULL, '2018111916441291963', NULL, '2018112209485799882', '说的真好+1', '2018-11-22 10:07:02', 1, 'NEWS', 'RP201811221007028470');
+INSERT INTO `wc_reply` VALUES ('RP201811221105508699', NULL, '2018111916441291963', NULL, '2018112209485799882', '说的真好+2', '2018-11-22 11:05:50', 1, 'NEWS', 'RP201811221105508699');
 INSERT INTO `wc_reply` VALUES ('RP201811221408501569', 'RP201811211650186103', '2018111916441291963', '2018111514554801539', '2018112209485799882', '说的哪里好了？', '2018-11-22 14:08:50', 1, 'NEWS', 'RP201811211650186103');
 INSERT INTO `wc_reply` VALUES ('RP201811221514597422', 'RP201811221408501569', '2018111916441291963', '2018112209485799882', '2018111514554801539', '我说错了吗？', '2018-11-22 15:14:59', 1, 'NEWS', 'RP201811211650186103');
 INSERT INTO `wc_reply` VALUES ('RP201811221538107123', NULL, '2018111916441291963', NULL, '2018111514554801539', '好棒啊', '2018-11-22 15:38:10', 1, 'NEWS', 'RP201811221538107123');

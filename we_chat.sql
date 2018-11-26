@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 25/11/2018 22:58:13
+ Date: 26/11/2018 17:09:39
 */
 
 SET NAMES utf8mb4;
@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `wc_category`;
 CREATE TABLE `wc_category`  (
   `category_id` bigint(32) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `category_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
-  `creation_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `creation_time` datetime DEFAULT NULL COMMENT '创建时间',
   `is_show` tinyint(14) NOT NULL COMMENT '是否显示',
   PRIMARY KEY (`category_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10002 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '兴趣类---新闻' ROW_FORMAT = Compact;
@@ -43,9 +43,9 @@ CREATE TABLE `wc_feedback`  (
   `feedback_id` bigint(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(0) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '反馈人id',
   `creation_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '反馈内容部分',
-  `state` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '反馈处理状态',
+  `state` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '反馈处理状态',
   PRIMARY KEY (`feedback_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
@@ -60,16 +60,16 @@ CREATE TABLE `wc_follow`  (
   `status` tinyint(4) NOT NULL COMMENT '关注状态:是否取消关注等',
   `creation_time` datetime NOT NULL COMMENT '关注时间',
   `update_time` datetime NOT NULL COMMENT '修改时间',
-  `type` smallint(3) NOT NULL COMMENT '0 u1,u2无关系 、1 u1关注u2 2 互关',
   PRIMARY KEY (`follow_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100004 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '关注关系表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 100005 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '关注关系表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of wc_follow
 -- ----------------------------
-INSERT INTO `wc_follow` VALUES (100001, '2018112209485799882', '2018111514554801539', 1, '2018-11-23 22:48:51', '2018-11-25 15:34:13', 0);
-INSERT INTO `wc_follow` VALUES (100002, '2018111514554801539', '2018112209485799882', 1, '2018-11-23 22:51:44', '2018-11-23 22:56:13', 0);
-INSERT INTO `wc_follow` VALUES (100003, '2018111514554801539', '2018112522392311637', 1, '2018-11-25 22:40:48', '2018-11-25 22:40:48', 0);
+INSERT INTO `wc_follow` VALUES (100001, '2018112209485799882', '2018111514554801539', 1, '2018-11-23 22:48:51', '2018-11-25 15:34:13');
+INSERT INTO `wc_follow` VALUES (100002, '2018111514554801539', '2018112209485799882', 1, '2018-11-23 22:51:44', '2018-11-23 22:56:13');
+INSERT INTO `wc_follow` VALUES (100003, '2018111514554801539', '2018112522392311637', 1, '2018-11-25 22:40:48', '2018-11-25 22:40:48');
+INSERT INTO `wc_follow` VALUES (100004, '2018112522392311637', '2018111514554801539', 1, '2018-11-26 12:47:07', '2018-11-26 12:47:07');
 
 -- ----------------------------
 -- Table structure for wc_forum
@@ -80,7 +80,7 @@ CREATE TABLE `wc_forum`  (
   `forum_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '论坛标题',
   `publisher_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '论坛发布人',
   `creation_time` datetime NOT NULL COMMENT '发布时间',
-  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   `is_show` tinyint(4) NOT NULL COMMENT '是否发布',
   `read_num` int(11) NOT NULL COMMENT '阅读量',
   `comment_num` int(11) NOT NULL COMMENT '评论数',
@@ -97,7 +97,7 @@ CREATE TABLE `wc_moments`  (
   `publisher_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '说说发布人',
   `creation_time` datetime NOT NULL COMMENT '发布时间',
   `is_show` tinyint(4) NOT NULL COMMENT '是否发布',
-  `moments_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '说说图',
+  `moments_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '说说图',
   PRIMARY KEY (`moments_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
@@ -117,13 +117,13 @@ CREATE TABLE `wc_news`  (
   `news_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '新闻标题',
   `publisher_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '新闻发布人',
   `creation_time` datetime NOT NULL COMMENT '发布时间',
-  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
-  `is_show` tinyint(4) NULL DEFAULT NULL COMMENT '是否发布',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `is_show` tinyint(4) DEFAULT NULL COMMENT '是否发布',
   `news_link` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '新闻链接',
   `read_num` int(11) NOT NULL COMMENT '阅读量',
-  `news_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '新闻列表图',
-  `comment_num` int(11) NULL DEFAULT NULL COMMENT '评论数',
-  `category` bigint(255) NULL DEFAULT NULL COMMENT '所属分类',
+  `news_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '新闻列表图',
+  `comment_num` int(11) DEFAULT NULL COMMENT '评论数',
+  `category` bigint(255) DEFAULT NULL COMMENT '所属分类',
   PRIMARY KEY (`news_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
@@ -140,8 +140,8 @@ CREATE TABLE `wc_read`  (
   `read_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `dynamic_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '该动态id',
   `dynamic_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '该动态类别 新闻、话题、说说',
-  `reader_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '阅读用户id',
-  `reader_equipment` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '阅读的设备id',
+  `reader_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '阅读用户id',
+  `reader_equipment` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '阅读的设备id',
   `creation_time` datetime NOT NULL COMMENT '阅读时间',
   PRIMARY KEY (`read_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
@@ -158,9 +158,9 @@ INSERT INTO `wc_read` VALUES ('R201811211111032274', '2018111916441291963', 'NEW
 DROP TABLE IF EXISTS `wc_reply`;
 CREATE TABLE `wc_reply`  (
   `reply_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '回复id',
-  `reply_parent_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '回复父id',
+  `reply_parent_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '回复父id',
   `dynamic_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '该动态主id',
-  `reply_parent_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '被回复人的userId',
+  `reply_parent_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '被回复人的userId',
   `dynamic_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '该条回复的userId',
   `reply_content` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '回复内容',
   `creation_time` datetime NOT NULL COMMENT '回复时间',
@@ -199,27 +199,29 @@ CREATE TABLE `wc_sms`  (
 DROP TABLE IF EXISTS `wc_user`;
 CREATE TABLE `wc_user`  (
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `signature` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '个性签名',
+  `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `signature` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '个性签名',
   `gender` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `head_avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '头像',
+  `head_avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '头像',
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `city` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '江苏 苏州',
-  `age` int(10) NULL DEFAULT NULL,
-  `background_wall` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '背景墙',
-  `creation_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
-  `visitor_num` int(11) NULL DEFAULT NULL COMMENT '空间访问量',
+  `city` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '江苏 苏州',
+  `age` int(10) DEFAULT NULL,
+  `background_wall` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '背景墙',
+  `creation_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `visitor_num` int(11) DEFAULT NULL COMMENT '空间访问量',
   PRIMARY KEY (`user_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of wc_user
 -- ----------------------------
-INSERT INTO `wc_user` VALUES ('2018111514554801539', '安德拉', '你若安好便是晴天', '男', 'http://img4.duitang.com/uploads/item/201407/16/20140716132526_TcyTY.thumb.600_0.jpeg', '123456', '18844157372', '江苏 苏州', NULL, 'http://image.biaobaiju.com/uploads/20180918/15/1537256494-ZnSKMzEoBI.jpeg', '2018-11-15 14:55:48', '2018-11-15 14:55:48', NULL);
-INSERT INTO `wc_user` VALUES ('2018112209485799882', '阿凡达', '阿拉上海宁', '男', 'string', '$2a$10$.Ehdm124nBWnhhPxpHMGjuFyN/xtHRAG0NQnA13D10BDsvok38xke', '18844157373', '江苏 无锡', 99, 'string', '2018-11-22 09:48:59', '2018-11-22 09:48:59', NULL);
-INSERT INTO `wc_user` VALUES ('2018112522392311637', '阿拉丁', '这个人很懒什么都没留下', '男', 'string', '$2a$10$MW5KXsrGOh7KNYbbueV1R.iLuztZjXS/Y4R5IvDiVoLbIRCI1FzP.', '18844156666', '江苏 南京', 10, 'string', '2018-11-25 22:39:23', '2018-11-25 22:39:23', NULL);
+INSERT INTO `wc_user` VALUES ('2018111514554801539', '安德拉', '你若安好便是晴天', 'MAN', 'http://img4.duitang.com/uploads/item/201407/16/20140716132526_TcyTY.thumb.600_0.jpeg', '$2a$10$fzzLW9cSv6hWJM69y/wTk.5ToKx0toFetjNFFtxF4oTrghHAzDTwu', '18844157372', '江苏 常州', 12, 'http://image.biaobaiju.com/uploads/20180918/15/1537256494-ZnSKMzEoBI.jpeg', '2018-11-15 14:55:48', '2018-11-26 17:08:16', NULL);
+INSERT INTO `wc_user` VALUES ('2018112209485799882', '阿凡达', '阿拉上海宁', 'MAN', 'string', '$2a$10$.Ehdm124nBWnhhPxpHMGjuFyN/xtHRAG0NQnA13D10BDsvok38xke', '18844157373', '江苏 无锡', 99, 'string', '2018-11-22 09:48:59', '2018-11-22 09:48:59', NULL);
+INSERT INTO `wc_user` VALUES ('2018112522392311637', '阿拉丁', '这个人很懒什么都没留下', 'MAN', 'string', '$2a$10$MW5KXsrGOh7KNYbbueV1R.iLuztZjXS/Y4R5IvDiVoLbIRCI1FzP.', '18844156666', '江苏 南京', 10, 'string', '2018-11-25 22:39:23', '2018-11-25 22:39:23', NULL);
+INSERT INTO `wc_user` VALUES ('2018112614440997566', '奔波儿灞', '哈哈哈哈哈哈好开心', 'MAN', 'string', '$2a$10$iFREF4kI459eMxiRQlNO5uZDQFs6UalXRf/rcgBg2/.R71ZMSCNU.', '18888888888', '江苏 南通', 20, 'string', '2018-11-26 14:44:09', '2018-11-26 14:44:09', NULL);
+INSERT INTO `wc_user` VALUES ('2018112614561030387', '霸波尔奔', '你好啊呀呀呀有', 'MAN', 'string', '$2a$10$rMGKr2SFvpCMuxzideT6muzt2CELC8rVV8pImE.B7jmbE7aZDSQbe', '18888888887', '江苏 南通', 21, 'string', '2018-11-26 14:56:10', '2018-11-26 14:56:10', NULL);
 
 -- ----------------------------
 -- Table structure for wc_visitor

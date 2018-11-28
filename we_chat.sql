@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 26/11/2018 17:09:39
+ Date: 28/11/2018 16:43:12
 */
 
 SET NAMES utf8mb4;
@@ -191,7 +191,12 @@ CREATE TABLE `wc_sms`  (
   `sms_content` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '发送的内容',
   `creation_time` datetime NOT NULL COMMENT '短信发送时间',
   PRIMARY KEY (`sms_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '短信表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1000002 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '短信表' ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of wc_sms
+-- ----------------------------
+INSERT INTO `wc_sms` VALUES (1000001, 'REGISTER', '18844157374', '054468', '2018-11-28 14:06:04');
 
 -- ----------------------------
 -- Table structure for wc_user
@@ -228,11 +233,21 @@ INSERT INTO `wc_user` VALUES ('2018112614561030387', '霸波尔奔', '你好啊�
 -- ----------------------------
 DROP TABLE IF EXISTS `wc_visitor`;
 CREATE TABLE `wc_visitor`  (
-  `visitor_id` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `visitor_id` bigint(10) NOT NULL AUTO_INCREMENT,
   `creation_time` datetime NOT NULL COMMENT '访问时间',
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '访客id',
   `visitors_uesr` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '被访问的id',
   PRIMARY KEY (`visitor_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '访客记录表  group by' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 10000015 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '访客记录表  group by' ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of wc_visitor
+-- ----------------------------
+INSERT INTO `wc_visitor` VALUES (10000008, '2018-11-27 09:16:01', '2018112614561030387', '2018111514554801539');
+INSERT INTO `wc_visitor` VALUES (10000009, '2018-11-27 09:16:02', '2018112614561030387', '2018111514554801539');
+INSERT INTO `wc_visitor` VALUES (10000010, '2018-11-27 09:16:10', '2018112522392311637', '2018111514554801539');
+INSERT INTO `wc_visitor` VALUES (10000011, '2018-11-27 09:16:21', '2018112209485799882', '2018111514554801539');
+INSERT INTO `wc_visitor` VALUES (10000012, '2018-11-27 09:16:34', '2018111514554801539', '2018112614561030387');
+INSERT INTO `wc_visitor` VALUES (10000013, '2018-11-27 09:25:36', '2018112522392311637', '2018111514554801539');
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 28/11/2018 16:43:12
+ Date: 28/11/2018 22:47:16
 */
 
 SET NAMES utf8mb4;
@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `wc_category`;
 CREATE TABLE `wc_category`  (
   `category_id` bigint(32) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `category_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
-  `creation_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `creation_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `is_show` tinyint(14) NOT NULL COMMENT '是否显示',
   PRIMARY KEY (`category_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10002 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '兴趣类---新闻' ROW_FORMAT = Compact;
@@ -43,11 +43,22 @@ CREATE TABLE `wc_feedback`  (
   `feedback_id` bigint(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(0) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '反馈人id',
   `creation_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '反馈内容部分',
-  `state` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '反馈处理状态',
+  `state` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '反馈处理状态',
   PRIMARY KEY (`feedback_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for wc_file
+-- ----------------------------
+DROP TABLE IF EXISTS `wc_file`;
+CREATE TABLE `wc_file`  (
+  `file_id` bigint(11) NOT NULL AUTO_INCREMENT,
+  `file_link` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `creation_time` datetime NOT NULL,
+  PRIMARY KEY (`file_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 100001 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for wc_follow
@@ -80,7 +91,7 @@ CREATE TABLE `wc_forum`  (
   `forum_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '论坛标题',
   `publisher_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '论坛发布人',
   `creation_time` datetime NOT NULL COMMENT '发布时间',
-  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
   `is_show` tinyint(4) NOT NULL COMMENT '是否发布',
   `read_num` int(11) NOT NULL COMMENT '阅读量',
   `comment_num` int(11) NOT NULL COMMENT '评论数',
@@ -97,7 +108,7 @@ CREATE TABLE `wc_moments`  (
   `publisher_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '说说发布人',
   `creation_time` datetime NOT NULL COMMENT '发布时间',
   `is_show` tinyint(4) NOT NULL COMMENT '是否发布',
-  `moments_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '说说图',
+  `moments_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '说说图',
   PRIMARY KEY (`moments_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
@@ -117,13 +128,13 @@ CREATE TABLE `wc_news`  (
   `news_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '新闻标题',
   `publisher_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '新闻发布人',
   `creation_time` datetime NOT NULL COMMENT '发布时间',
-  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
-  `is_show` tinyint(4) DEFAULT NULL COMMENT '是否发布',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `is_show` tinyint(4) NULL DEFAULT NULL COMMENT '是否发布',
   `news_link` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '新闻链接',
   `read_num` int(11) NOT NULL COMMENT '阅读量',
-  `news_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '新闻列表图',
-  `comment_num` int(11) DEFAULT NULL COMMENT '评论数',
-  `category` bigint(255) DEFAULT NULL COMMENT '所属分类',
+  `news_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '新闻列表图',
+  `comment_num` int(11) NULL DEFAULT NULL COMMENT '评论数',
+  `category` bigint(255) NULL DEFAULT NULL COMMENT '所属分类',
   PRIMARY KEY (`news_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
@@ -140,8 +151,8 @@ CREATE TABLE `wc_read`  (
   `read_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `dynamic_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '该动态id',
   `dynamic_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '该动态类别 新闻、话题、说说',
-  `reader_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '阅读用户id',
-  `reader_equipment` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '阅读的设备id',
+  `reader_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '阅读用户id',
+  `reader_equipment` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '阅读的设备id',
   `creation_time` datetime NOT NULL COMMENT '阅读时间',
   PRIMARY KEY (`read_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
@@ -158,9 +169,9 @@ INSERT INTO `wc_read` VALUES ('R201811211111032274', '2018111916441291963', 'NEW
 DROP TABLE IF EXISTS `wc_reply`;
 CREATE TABLE `wc_reply`  (
   `reply_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '回复id',
-  `reply_parent_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '回复父id',
+  `reply_parent_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '回复父id',
   `dynamic_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '该动态主id',
-  `reply_parent_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '被回复人的userId',
+  `reply_parent_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '被回复人的userId',
   `dynamic_user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '该条回复的userId',
   `reply_content` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '回复内容',
   `creation_time` datetime NOT NULL COMMENT '回复时间',
@@ -204,18 +215,18 @@ INSERT INTO `wc_sms` VALUES (1000001, 'REGISTER', '18844157374', '054468', '2018
 DROP TABLE IF EXISTS `wc_user`;
 CREATE TABLE `wc_user`  (
   `user_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `signature` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '个性签名',
+  `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `signature` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '个性签名',
   `gender` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `head_avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '头像',
+  `head_avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '头像',
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `city` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '江苏 苏州',
-  `age` int(10) DEFAULT NULL,
-  `background_wall` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '背景墙',
-  `creation_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
-  `visitor_num` int(11) DEFAULT NULL COMMENT '空间访问量',
+  `city` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '江苏 苏州',
+  `age` int(10) NULL DEFAULT NULL,
+  `background_wall` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '背景墙',
+  `creation_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `visitor_num` int(11) NULL DEFAULT NULL COMMENT '空间访问量',
   PRIMARY KEY (`user_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 

@@ -34,9 +34,24 @@ Spring Cloud Zuul作为网关的分布式系统中整合Swagger文档         20
 https://blog.csdn.net/qq6492178/article/details/78863935
 
 部署自己的阿里云git代码上传服务器               2019/04/10
+
 再找一个接口文档喵咚家 -- 类似swagger          2019/04/10
+
 mongodb                                   2019/04/11
+
 用户角色权限 spring-boot-starter-security          2019/04/12
+https://security.mrbird.cc/start.html
+
+docker                                2019/04/13
+
+nginx                                  2019/04/24
+安装：https://www.runoob.com/linux/nginx-install-setup.html
+部署：https://segmentfault.com/a/1190000010487262?utm_source=tag-newest
+启动/重启：https://www.landui.com/help/show-7688
+
+git分支、提交、冲突解决                   2019/04/23
+
+Hystrix 熔断统计限流                    2019/04/23
 
 
 

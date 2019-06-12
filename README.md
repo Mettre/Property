@@ -52,6 +52,13 @@ nginx                                  2019/04/24
 git分支、提交、冲突解决                   2019/04/23
 Hystrix 熔断统计限流                    2019/04/23
 
+logback-spring.xml日志文件管理            2019/05/21
+https://www.cnblogs.com/zhangjianbing/p/8992897.html
+
+使用Navicat管理MySQL用户
+https://blog.csdn.net/u012832088/article/details/81281726
+
+
 
 
   

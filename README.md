@@ -58,6 +58,14 @@ https://www.cnblogs.com/zhangjianbing/p/8992897.html
 使用Navicat管理MySQL用户
 https://blog.csdn.net/u012832088/article/details/81281726
 
+企业开发管理工具快速                       2019/06/13
+https://github.com/zhangdaiscott/jeecg-boot
+                  
+idea 直接一键发布jar包到私服               2019/06/17
+
+公共类项目不能有main方法                   2019/06/18
+父pom                                   2019/06/18
+
 
 
 

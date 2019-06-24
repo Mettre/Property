@@ -61,6 +61,7 @@ https://blog.csdn.net/u012832088/article/details/81281726
 企业开发管理工具快速                       2019/06/13
 https://github.com/zhangdaiscott/jeecg-boot
                   
+https://blog.csdn.net/wojiaoguchenghuanye/article/details/79728387                  
 idea 直接一键发布jar包到私服               2019/06/17
 
 公共类项目不能有main方法                   2019/06/18

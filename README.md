@@ -73,6 +73,7 @@ zuul网关超时500问题                       2019/06/21
 
 微服务多模块继承父pom 公共模块              2019/10/16
 
+https://www.cnblogs.com/xifengxiaoma/p/11061142.html
 shiro权限管理                            2019/10/21
 
 

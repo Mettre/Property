@@ -42,8 +42,6 @@ mongodb                                   2019/04/11
 用户角色权限 spring-boot-starter-security          2019/04/12
 https://security.mrbird.cc/start.html
 
-docker                                2019/04/13
-
 nginx                                  2019/04/24
 安装：https://www.runoob.com/linux/nginx-install-setup.html
 部署：https://segmentfault.com/a/1190000010487262?utm_source=tag-newest
@@ -75,6 +73,18 @@ zuul网关超时500问题                       2019/06/21
 
 https://www.cnblogs.com/xifengxiaoma/p/11061142.html
 shiro权限管理                            2019/10/21
+
+https://blog.csdn.net/vbirdbest/article/details/80684460
+支付                                    2019/10/24
+
+花生壳内网穿透                            2019/10/24
+
+https://www.runoob.com/linux/linux-file-content-manage.html
+linux文件目录                            2019/10/24
+
+https://www.runoob.com/docker/docker-tutorial.html
+docker                                 2019/10/24
+
 
 
 
